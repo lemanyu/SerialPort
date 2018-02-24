@@ -1,0 +1,21 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="MyToast">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle"></item>
+        <item name="android:fontFamily"></item>
+        <item name="android:colorBackground">@color/text_pre</item>
+        <item name="android:radius">@dimen/flat</item>
+        <item name="android:alpha">255</item>
+
+    </style>
+
+
+</resources>

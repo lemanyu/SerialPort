@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <eat-comment />
+    <attr name="textSize" format="dimension" />
+    <attr name="textColor" format="color" />
+    <eat-comment />
+
+    <!--圆弧进度条-->
+    <declare-styleable name="CircleSeekBar">
+        <attr name="OutermostRadius" format="dimension" />
+        <attr name="InnerRadius" format="dimension" />
+        <attr name="CrackColor" format="color" />
+        <attr name="CrackBgColor" format="color" />
+        <attr name="CenterColor" format="color" />
+        <attr name="Size" format="integer" />
+        <attr name="textSize"/>
+        <attr name="textColor"/>
+    </declare-styleable>
+
+    <declare-styleable name="TableView">
+        <attr name="stateName" />
+        <attr name="stateSize" format="integer" />
+        <attr name="stateStart" format="integer" />
+
+        <attr name="startHour" format="integer" />
+        <attr name="startMinute" format="integer" />
+        <attr name="timeSize" format="integer" />
+        <attr name="minuteCrack" format="integer" />
+
+        <attr name="textSize"/>
+        <attr name="textColor" />
+
+        <attr name="max" format="integer"/>
+        <attr name="min" format="integer"/>
+    </declare-styleable>
+
+</resources>

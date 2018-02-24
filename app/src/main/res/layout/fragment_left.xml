@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutOne"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#cb000000">
+    <com.hsap.test2.view.CircleSeekBar
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:id="@+id/circleSeekBar"
+        android:layout_width="400dp"
+        android:layout_height="320dp"
+        app:CenterColor="#000"
+        app:CrackColor="#000fff"
+        app:InnerRadius="150dp"
+        app:OutermostRadius="160dp"
+        app:Size="100"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+    <TextView
+        android:id="@+id/tvShiDu"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="130dp"
+        app:layout_constraintLeft_toLeftOf="@id/circleSeekBar"
+        app:layout_constraintTop_toTopOf="@id/circleSeekBar"
+        app:layout_constraintBottom_toTopOf="@id/sleep_c_t_l_l_textview"
+        android:textSize="20sp"
+        android:textColor="#fff"
+        android:text="150"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:drawableTop="@drawable/ic_favorite_black_24dp"
+        android:text="湿度"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        app:layout_constraintTop_toTopOf="@id/tvShiDu"
+        app:layout_constraintLeft_toRightOf="@id/tvShiDu"
+        app:layout_constraintBottom_toBottomOf="@id/tvShiDu"
+        tools:text="RH" />
+    <TextView
+        android:id="@+id/tvWendu"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="210dp"
+        app:layout_constraintLeft_toLeftOf="@id/circleSeekBar"
+        app:layout_constraintTop_toTopOf="@id/circleSeekBar"
+        app:layout_constraintBottom_toTopOf="@id/sleep_c_t_l_l_textview"
+        android:textSize="20sp"
+        android:textColor="#fff"
+        android:text="160"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginLeft="85dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:drawableTop="@drawable/ic_favorite_black_24dp"
+        android:text="温度"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        app:layout_constraintTop_toTopOf="@id/tvShiDu"
+        app:layout_constraintLeft_toRightOf="@id/tvShiDu"
+        app:layout_constraintBottom_toBottomOf="@id/tvShiDu"
+        tools:text="TP" />
+    <TextView
+        android:id="@+id/sleep_c_t_l_l_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:text="0"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="@id/sleep_c_t_l_r_textview"
+        app:layout_constraintRight_toLeftOf="@id/sleep_c_t_l_r_textview"
+        tools:text="74" />
+
+    <TextView
+        android:id="@+id/sleep_c_t_l_r_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="5dp"
+        android:drawableTop="@drawable/ic_favorite_black_24dp"
+        android:paddingBottom="13dp"
+        android:text="次/分"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@id/sleep_center_view"
+        app:layout_constraintRight_toLeftOf="@id/sleep_center_view"
+        tools:text="C/F" />
+    <View
+        android:id="@+id/sleep_center_view"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:background="#00ffffff"
+        app:layout_constraintBottom_toBottomOf="@id/circleSeekBar"
+        app:layout_constraintLeft_toLeftOf="@id/circleSeekBar"
+        app:layout_constraintRight_toRightOf="@id/circleSeekBar"
+        app:layout_constraintTop_toTopOf="@id/circleSeekBar" />
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="#c4c4c4"
+        app:layout_constraintBottom_toBottomOf="@id/circleSeekBar"
+        app:layout_constraintEnd_toEndOf="@id/sleep_c_t_r_r_textview"
+        app:layout_constraintStart_toStartOf="@id/sleep_c_t_l_l_textview"
+        app:layout_constraintTop_toTopOf="@id/circleSeekBar" />
+    <TextView
+        android:id="@+id/sleep_c_t_r_l_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textColor="#fff"
+        android:textSize="50sp"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@id/sleep_center_view"
+        app:layout_constraintLeft_toRightOf="@id/sleep_center_view"
+        tools:text="19" />
+    <TextView
+        android:layout_marginLeft="5dp"
+        android:id="@+id/sleep_c_t_r_r_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_favorite_border_black_24dp"
+        android:paddingBottom="13dp"
+        android:text="次/分"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/sleep_c_t_r_l_textview"
+        app:layout_constraintLeft_toRightOf="@id/sleep_c_t_r_l_textview"
+        tools:text="C/F" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:textSize="50sp"
+        android:id="@+id/sleep_state"
+        android:text="请连接设备"
+        app:layout_constraintLeft_toLeftOf="@id/sleep_c_t_l_l_textview"
+        app:layout_constraintRight_toRightOf="@id/sleep_c_t_r_r_textview"
+        app:layout_constraintTop_toBottomOf="@id/sleep_center_view"
+        tools:text="Sleep" />
+    <TextView
+        android:id="@+id/sleep_c_b_c_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="@id/sleep_c_t_l_l_textview"
+        app:layout_constraintRight_toRightOf="@id/sleep_c_t_r_r_textview"
+        app:layout_constraintTop_toBottomOf="@id/sleep_center_view"
+        tools:text="Sleep State" />
+    <TextView
+        android:id="@+id/tvPM25"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="70dp"
+        app:layout_constraintRight_toLeftOf="@id/tvPM10"
+        app:layout_constraintTop_toBottomOf="@id/sleep_state"
+        android:textSize="20sp"
+        android:textColor="#fff"
+        android:text="180"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="65dp"
+        android:drawableTop="@drawable/ic_favorite_black_24dp"
+        android:text="PM2.5"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        app:layout_constraintLeft_toLeftOf="@id/circleSeekBar"
+        app:layout_constraintTop_toBottomOf="@id/sleep_c_b_c_textview"
+        app:layout_constraintBottom_toTopOf="@id/sleep_c_b_c_textview"
+        tools:text="PM2.5" />
+
+    79879877887878798
+    <TextView
+        android:id="@+id/tvPM10"
+        android:gravity="center"
+        android:layout_marginTop="65dp"
+        android:layout_marginLeft="215dp"
+        app:layout_constraintLeft_toLeftOf="@id/circleSeekBar"
+        app:layout_constraintTop_toBottomOf="@id/sleep_c_b_c_textview"
+        app:layout_constraintBottom_toTopOf="@id/sleep_c_b_c_textview"
+        android:textSize="20sp"
+        android:textColor="#fff"
+        android:text="350"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:drawableTop="@drawable/ic_favorite_black_24dp"
+        android:text="PM10"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        app:layout_constraintTop_toTopOf="@id/tvPM10"
+        app:layout_constraintLeft_toRightOf="@id/tvPM10"
+        app:layout_constraintBottom_toBottomOf="@id/tvPM10"
+        tools:text="PM10" />
+    <TextView
+        android:id="@+id/sleep_b_b_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="实际睡眠时间"
+        android:textColor="#fff"
+        android:textSize="50sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/circleSeekBar"
+        tools:text="Sleep Time" />
+    <LinearLayout
+        android:id="@+id/sleep_l_linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/sleep_b_b_textview">
+        <TextView
+            android:id="@+id/sleep_hour_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="50sp"
+            android:text="7"
+            tools:text="7" />
+        <TextView
+            android:id="@+id/sleep_hour_t_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="钟"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            tools:text="Hous" />
+        <TextView
+            android:id="@+id/sleep_minut_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="50sp"
+            android:text="49"
+            tools:text="49" />
+        <TextView
+            android:id="@+id/sleep_m_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            tools:text="Minus" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvLeftSleep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="#fff"
+        android:textSize="50sp"
+        android:text="00:00~00:00"
+        app:layout_constraintTop_toBottomOf="@id/sleep_l_linearLayout"
+        tools:text="23:20~07:09" />
+    <RadioGroup
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/rgWind"
+        app:layout_constraintBottom_toTopOf="@id/ll"
+        app:layout_constraintTop_toBottomOf="@id/tvLeftSleep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:textColor="@drawable/selector_text_color"
+            android:id="@+id/rbLowWind"
+            android:textSize="30sp"
+            android:layout_weight="1"
+            android:text="低风"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:textColor="@drawable/selector_text_color"
+            android:id="@+id/rbInWind"
+            android:textSize="30sp"
+            android:layout_weight="1"
+            android:text="中风"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:textColor="@drawable/selector_text_color"
+            android:id="@+id/rbHighWind"
+            android:textSize="30sp"
+            android:layout_weight="1"
+            android:text="高风"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </RadioGroup>
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/rgWind"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btBegin"
+            android:textSize="18sp"
+            android:text="开始睡觉"
+            android:layout_width="0dp"
+            android:layout_height="200dp" />
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/btEnd"
+            android:textSize="18sp"
+            android:text="结束睡觉"
+            android:layout_width="0dp"
+            android:layout_height="200dp" />
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
