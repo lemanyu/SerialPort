@@ -26,7 +26,6 @@ public class EnvironmentUtil {
         return stringBuilder.toString();
     }
 
-
     //发送
     public static byte[] HexString2Bytes(String src) {
         byte[] ret = new byte[src.length() / 2];

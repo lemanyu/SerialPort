@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayoutTow"
+    android:orientation="vertical"
     android:background="#cb000000"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
+
         android:id="@+id/sleep_r_1_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:drawableLeft="@drawable/ic_favorite_black_24dp"
         android:drawablePadding="10dp"
         android:paddingLeft="10dp"
@@ -24,10 +26,8 @@
     <com.hsap.test2.view.TableView
         android:id="@+id/tbvHeart"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="220dp"
         android:background="#f1232323"
-        app:layout_constraintBottom_toTopOf="@id/sleep_r_2_tv"
-        app:layout_constraintTop_toBottomOf="@id/sleep_r_1_tv"
         app:stateName="150,100,50,0"
         app:minuteCrack="60"
         app:startHour="22"
@@ -49,16 +49,13 @@
         android:text="呼吸率\n次/分"
         android:textColor="#fff"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@id/sleep_r_3_tv"
-        app:layout_constraintTop_toBottomOf="@id/sleep_r_1_tv"
+
         tools:text="Respiatory Rate\nC/F" />
     <com.hsap.test2.view.TableView
         android:id="@+id/tbvBreathing"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="220dp"
         android:background="#f1232323"
-        app:layout_constraintBottom_toTopOf="@id/sleep_r_3_tv"
-        app:layout_constraintTop_toBottomOf="@id/sleep_r_2_tv"
         app:stateName="40,30,20,10,0"
         app:minuteCrack="60"
         app:startHour="22"
@@ -70,19 +67,20 @@
         app:timeSize="10"
         app:max="40"/>
     <TextView
+        android:visibility="gone"
         android:id="@+id/sleep_r_3_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_favorite_black_24dp"
         android:drawablePadding="10dp"
         android:paddingLeft="10dp"
-        android:text="翻身\n次/分"
         android:textColor="#fff"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/sleep_r_2_tv"
         tools:text="Respiatory Rate\nC/F" />
     <com.hsap.test2.view.TableView
+        android:visibility="gone"
         android:id="@+id/tvbRoll"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -100,4 +98,4 @@
         app:timeSize="10"
         app:max="10"/>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -1,9 +1,15 @@
 package com.hsap.test2.utils;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.medica.restonsdk.Constants;
@@ -16,9 +22,10 @@ import com.xiasuhuei321.loadingdialog.view.LoadingDialog;
 import com.yanzhenjie.permission.Action;
 import com.yanzhenjie.permission.AndPermission;
 import com.yanzhenjie.permission.Permission;
+import com.yanzhenjie.permission.Rationale;
+import com.yanzhenjie.permission.RequestExecutor;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -38,16 +45,18 @@ public class SleepUtil {
         RestOnHelper helper = RestOnHelper.getInstance(activity);
         flag = false;
         if (helper.isSupportBle()) {
+            //TODO测试
             if (!helper.isBluetoothOpen()) {
-                if (Build.VERSION.SDK_INT >= 23) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     //申请蓝牙权限
-                    AndPermission.with(activity).permission(Permission.ACCESS_COARSE_LOCATION, Permission.ACCESS_FINE_LOCATION).
+                    AndPermission.with(activity).permission(Permission.ACCESS_COARSE_LOCATION,
+                            Permission.ACCESS_FINE_LOCATION).
                             onGranted(new Action() {
-                        @Override
-                        public void onAction(List<String> permissions) {
-                            flag = true;
-                        }
-                    }).onDenied(new Action() {
+                                @Override
+                                public void onAction(List<String> permissions) {
+                                    flag = true;
+                                }
+                            }).onDenied(new Action() {
                         @Override
                         public void onAction(List<String> permissions) {
                             flag = false;
@@ -73,14 +82,53 @@ public class SleepUtil {
         return helper;
     }
 
+    public static RestOnHelper open(final Activity activity) {
+        SleepUtil.activity = activity;
+        RestOnHelper helper = RestOnHelper.getInstance(activity);
+        boolean flag = false;
+        //手机没有Ble功能
+        if (!helper.isSupportBle()) {
+            Toast.makeText(activity, "当前设备不支持BLE", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //ACCESS_COARSE_LOCATION 位置权限
+            //BLUETOOTH 蓝牙权限
+            if (ContextCompat.checkSelfPermission(activity, Manifest.permission.BLUETOOTH) != PackageManager.PERMISSION_GRANTED
+                    || ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(activity, new String[]{
+                        Manifest.permission.BLUETOOTH,
+                        Manifest.permission.ACCESS_COARSE_LOCATION},
+                        101);
+            } else {
+                //权限已授予
+                flag = true;
+            }
+        } else {
+            //Android版本小于23不需要动态申请
+            flag = true;
+        }
+
+        if (flag) {
+            return helper;
+        } else {
+            return null;
+        }
+    }
+
+    private static String TAG = "Dongsh";
+
     //搜索链接设备
     public static BleDevice linkBluetooth(final RestOnHelper helper, final Handler mHandler) {
         final LoadingDialog dialog = new LoadingDialog(activity);
-        dialog.setLoadingText("获取关联中").setSuccessText("连接成功").setFailedText("连接失败").setInterceptBack(true).setLoadSpeed(LoadingDialog.Speed.SPEED_TWO).setRepeatCount(0);
-
+        dialog.setLoadingText("获取关联中").setSuccessText("连接成功")
+                .setFailedText("连接失败").setInterceptBack(true)
+                .setLoadSpeed(LoadingDialog.Speed.SPEED_TWO).setRepeatCount(0);
+        Log.d(TAG, "linkBluetooth: " + helper);
         helper.scanBleDevice(new BleScanListener() {
             @Override
             public void onBleScanStart() {
+                Log.d("Dongsh", "onBleScan: ");
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -90,27 +138,31 @@ public class SleepUtil {
             }
 
             @Override
-            public void onBleScan(BleDevice bleDevice) {
-                Message message = mHandler.obtainMessage();
-                message.what = 99;
-                message.obj = bleDevice;
-                mHandler.sendMessage(message);
+            public void onBleScan(BleDevice bleDevi) {
+                Log.d("Dongsh", "onBleScan: " + bleDevi);
+                if (bleDevi.deviceId.equals("Z2-0017500199")) {
+                    bleDevice=bleDevi;
+                    Message message = mHandler.obtainMessage();
+                    message.what = 99;
+                    message.obj = bleDevi;
+                    mHandler.sendMessage(message);
+                }
             }
-
             @Override
             public void onBleScanFinish() {
                 //现在一个，后期删除加入选择
-                helper.connDevice(new ResultCallback() {
+                helper.connDevice(bleDevice,new ResultCallback() {
                     @Override
                     public void onResult(Method method, Object o) {
+                        Log.d(TAG, "onResult: " + helper.getConnectState());
                         switch (helper.getConnectState()) {
                             case 0:
-                            activity.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    dialog.loadFailed();
-                                }
-                            });
+                                activity.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        dialog.loadFailed();
+                                    }
+                                });
                                 break;
                             case 1:
                                 dialog.close();
@@ -167,6 +219,15 @@ public class SleepUtil {
         return helper;
     }
 
+    public static void logout(RestOnHelper helper) {
+        helper.logout(new ResultCallback() {
+            @Override
+            public void onResult(Method method, Object o) {
+
+            }
+        });
+    }
+
     public static String getSleepState(byte status) {
         String str;
         switch (status) {
@@ -202,7 +263,10 @@ public class SleepUtil {
         }
         return str;
     }
-    /** 两个时间相差距离多少天多少小时多少分 */
+
+    /**
+     * 两个时间相差距离多少天多少小时多少分
+     */
     public static String getDistanceTime(String str1, String str2, String pattern) {
         if (pattern == null || pattern.equals("")) {
             pattern = "yyyy-MM-dd HH:mm";
@@ -228,9 +292,9 @@ public class SleepUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if(day==0){
-            return  hour + "小时" + min + "分" ;
-        }else {
+        if (day == 0) {
+            return hour + "小时" + min + "分";
+        } else {
             return day + "天" + hour + "小时" + min + "分";
         }
     }

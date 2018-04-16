@@ -2,8 +2,15 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ffffff</color>
     <color name="windowBg">#00ff4c</color>
     <color name="text_pre">#7915f8</color>
-    <color name="text_nor">#e4e4e4</color>
+    <color name="text_nor">#ffffff</color>
+    <color name="accent">#a1a1a1</color>
+    <color name="iron">#CCCCCC</color>
+    <color name="white">#FFFFFF</color>
+    <color name="primary">#3B82C5</color>
+    <color name="gray_btn_bg_color">#D0D0D0</color>
+    <color name="gray_btn_bg_pressed_color">#B6B6B6</color>
+    <color name="sweet_dialog_bg_color">#FFFFFF</color>
 </resources>

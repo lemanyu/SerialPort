@@ -16,6 +16,19 @@
         <item name="android:alpha">255</item>
 
     </style>
-
-
+    <style name="MyTheme" parent="AppTheme.Dark.Dialog">
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:textSize">30sp</item>
+        <item name="colorAccent">#000000</item>
+        <item name="windowNoTitle">true</item>
+        <item name="actionButtonStyle">@drawable/gray_button_background</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:background">#DCEEF2</item>
+    </style>
+    <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColorPrimary">@color/iron</item>
+        <item name="android:background">@color/primary</item>
+    </style>
 </resources>

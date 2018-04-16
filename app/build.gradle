@@ -9,6 +9,25 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+                XG_ACCESS_ID:"2100277970",
+                XG_ACCESS_KEY : "A3K9IHXW912A",
+                HW_APPID: "100220287"
+        ]
+        ndk {
+            abiFilters "armeabi"
+        }
+        task nativeLibsToJar(type: Zip, description: "create a jar archive of the native libs") {
+            destinationDir file("$projectDir/libs")
+            baseName "Native_Libs2"
+            extension "jar"
+            from fileTree(dir: "libs", include: "**/*.so")
+            into "lib"
+        }
+
+        tasks.withType(JavaCompile) {
+            compileTask -> compileTask.dependsOn(nativeLibsToJar)
+        }
     }
     buildTypes {
         release {
@@ -16,10 +35,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
@@ -36,4 +57,18 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.1.1'
     compile 'com.muddzdev:styleabletoast:1.0.9'
     compile 'com.github.kongqw:AndroidSerialPort:1.0.1'
+    //信鸽jar
+    compile 'com.tencent.xinge:xinge:3.2.2-release'
+    //wup包
+    compile 'com.tencent.wup:wup:1.0.0.E-release'
+    //mid包
+    compile 'com.tencent.mid:mid:4.0.6-release'
+    //华为推送
+    compile 'com.tencent.xinge:xghw:2.5.2.300-release'
+    //需要在信鸽的集成基础上新增小米push的jar包
+    compile 'com.tencent.xinge:mipush:3.2.2-release'
+    compile 'cn.yipianfengye.android:zxing-library:2.2'
+    compile 'com.lzy.net:okgo:3.0.4'
+    implementation 'com.google.code.gson:gson:2.2.4'
+    compile 'com.weigan:loopView:0.1.2'
 }

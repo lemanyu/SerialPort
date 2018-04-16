@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialogground"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:text="请选择治疗强度"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.weigan.loopview.LoopView
+        android:layout_marginTop="50dp"
+        android:id="@+id/loopView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        app:awv_textsize="25"
+        />
+    <TextView
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="默认治疗强度为四级"
+        android:textSize="18sp"/>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+        <!--<Button-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:id="@+id/TM_Choose_Cancle"-->
+            <!--android:text="取消"-->
+            <!--android:textSize="20sp"-->
+            <!--/>-->
+        <!--<Button-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:id="@+id/TM_Choose_Ok"-->
+            <!--android:textSize="20sp"-->
+            <!--android:text="确定"/>-->
+    <!--</LinearLayout>-->
+
+</LinearLayout>

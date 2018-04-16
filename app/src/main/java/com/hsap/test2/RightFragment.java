@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.hsap.test2.data.Data;
+import com.hsap.test2.data.IsClearBean;
 import com.hsap.test2.data.MessageEvent;
 import com.hsap.test2.view.TableView;
 import com.medica.restonsdk.Constants;
@@ -98,8 +99,13 @@ public class RightFragment extends BaseFragmentPager {
         tbvRoll.startHour=event.getHour();
         tbvRoll.startMinute=event.getMinute();
        // heartList.add(new Point(x,(int) event.getData().heartRate));
-
-
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(IsClearBean event) {
+        heartList.clear();
+        breathList.clear();
+        rollList.clear();
+        x=0;
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageData(Data event) {
